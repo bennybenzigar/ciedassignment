@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class=" col-md-6 mb-2">
+            <p class="budget">Budget</p>
+            <img class="img-fluid w-100" src="assets/Rectangle 2313.png" alt="">
+        </div>
+
+        <div class="col-md-6 mt-2 main-div">
+            <!-- <div> -->
+                <div class="d-block mb-2 me-2 gethelp">
+                    <a href="">Having Trouble? <span >Get Help</span></a>
+                    drop
+                </div>
+            <div class="form-div mt-4 ">
+
+                
+                
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+                    <h2>Login to Budget</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitc</p>
+                    <div>
+                        <label for="email" >email</label>
+                        <input type="email"  formControlName="email" name="email" class="form-control">
+                    </div>
+                   <div>
+                    <label for="password">password</label>
+                    <input type="password" formControlName="password" name="password" class="form-control">
+                   </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <input formControlName="checkbox"  type="checkbox" id="checkbox">
+                            <label for="checkbox">Keep me logged in</label>
+                        </div>
+
+
+                        <a >Forgot Password?</a>
+                    </div>
+
+                    <button [disabled]="!loginForm.valid"  type="submit" class="btn btn-primary w-100">Login</button>
+                    <a > Create New Account?</a>
+                </form>
+            </div>
+
+            <!-- </div> -->
+        </div>
+    </div>
+
+
+</div>
