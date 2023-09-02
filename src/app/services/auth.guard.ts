@@ -12,9 +12,19 @@ export class authGuardService implements CanActivate {
   
   constructor(private dataService: DataService, private router:Router) {
 
+    
+    // console.log('user')
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
- if(this.dataService.isAuthenticated()){
+//  if(this.dataService.isAuthenticated()){
+//   return true
+//  }
+//   else{
+//   this.router.navigateByUrl('login')
+//     return false
+//   }
+//   }
+if(localStorage.getItem('user')){
   return true
  }
   else{
@@ -22,7 +32,6 @@ export class authGuardService implements CanActivate {
     return false
   }
   }
-
 
 
 }

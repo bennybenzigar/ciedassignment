@@ -1,0 +1,9 @@
+<div class="container-fluid g-0">
+  <main>
+    <app-sidenav *ngIf="loadedComponentPath !== '/login'" [ngClass]="{'sidenav-hidden': loadedComponentPath !== '/login'}"></app-sidenav>
+
+    <div class="display-area" [ngClass]="{'newclass': loadedComponentPath !== '/login'}">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

@@ -15,6 +15,10 @@ export class LoginComponent implements OnInit {
   // btnDisabled:boolean=true
   loginData: any
   loginForm!: FormGroup
+  flags:any=[]
+  selectedOption:any
+  showPassword: boolean = false;
+
   constructor(private dataService: DataService, private formBuilder: FormBuilder, private router: Router) { }
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -33,7 +37,7 @@ export class LoginComponent implements OnInit {
         let data:any = []
         for (let item of res) {
          let d={ name:item.altSpellings[0],
-            flags:item.flags.png}
+            flagss:item.flags.png}
          data.push(d)
 
         }
@@ -41,6 +45,8 @@ export class LoginComponent implements OnInit {
       }))
       .subscribe((res: any) => {
         console.log(res)
+        this.flags=res
+        console.log(this.flags,'f')
       })
   }
   getLoginDetails() {
@@ -57,7 +63,11 @@ export class LoginComponent implements OnInit {
 
         if (this.loginForm.value.password == this.loginData.password) {
           this.dataService.authenticated = true
+          localStorage.setItem('user',JSON.stringify(this.loginForm.value.email))
+          localStorage.setItem('l',JSON.stringify(true))
           this.router.navigateByUrl('dashboard')
+          // this.router.navigate['/l']
+          // window.location.reload()
 
 
         }
@@ -75,4 +85,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
 }

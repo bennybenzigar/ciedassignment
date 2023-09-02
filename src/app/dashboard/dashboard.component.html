@@ -1,76 +1,101 @@
-<div class="container-fluid">
-    <div>
-        <h1>Dashboard</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-        <div class="iDiv">
-            <i class="fa-solid fa-info rounded-circle text-white  d-flex align-items-center justify-content-center"
-                style="background-color: #FF831A;height: 2.00rem;width: 2.00rem;"></i>
-            <p>You Have <span>32 Support Request for Response</span> <span><a>View</a></span></p>
-        </div>
+<div class="container-fluid" style="max-height: 100vh">
+  <div class="row" style="overflow: auto;">
+    <div class="col-md-2 navborder" [style.display]="shouldDisplaySidenav() ">
+      <div class="sidenavdiv"  >
+        <app-sidenav></app-sidenav>
+      </div>
     </div>
-
-
-
-    <div class="d-flex">
-        <div *ngFor="let cdata of cardData;let i=index" class="card d-block text-white"
-            [ngStyle]="{ 'background-color': i % 2 === 0 ? '#005EFF' : '#4A9C88' }">
-            <p class="ptype">{{cdata.type}}</p>
-            <p class="pamount">{{cdata.amount}}</p>
-            <div class="d-flex justify-content-between align-items-center " >
-                <p class="ppercentage text-dark bg-white  ">{{cdata.percentage}}% <i *ngIf="cdata.percentage>0" class="fa-solid fa-arrow-up arrow"></i>
-                    <i *ngIf="cdata.percentage <0" class="fa-solid fa-arrow-down arrow"></i>
-                </p>
-                <p class="pmonth">{{cdata.month}}</p>
+    <div class="col-md-10 main">
+      <div *ngIf="loadedComponentPath!='/dashboard'">
+        <router-outlet></router-outlet>
+      </div>
+      <div *ngIf="loadedComponentPath=='/dashboard'">
+        <!-- <button *ngIf="screenWidth<700" (click)="changeStyle()">btn</button> -->
+        <a class="btn "*ngIf="screenWidth<768"  data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          <i class="fa-solid fa-bars"></i>
+        </a>
+        <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+          Button with data-bs-target
+        </button> -->
+        
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header">
+            <!-- <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5> -->
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <div>
+             <app-sidenav></app-sidenav>
             </div>
-
+           
+          </div>
         </div>
-    </div>
-
-    <div>
-        <h1>Recently Active Users</h1>
-
-        <div class="table-responsive-md">
+        <!--  -->
+        <div>
+          <h1 class="dashboardtxt">Dashboard</h1>
+          <p class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+          <div class="iDiv">
+            <i class="fa-solid fa-info rounded-circle text-white info me-1  d-flex align-items-center justify-content-center"></i>
+            <p class="support me-1">You Have <span class="me-1">32 Support Request for Response</span> <span><a>View</a></span></p>
+          </div>
+        </div>
+        <div class="cardDiv w-100">
+          <div class="row w-100">
+            <div *ngFor="let cdata of cardData;let i=index" class="card m-1 col-lg-2 col-md-3 col-sm-5 text-white"
+              [ngStyle]="{ 'background-color': i % 2 === 0 ? '#005EFF' : '#4A9C88' }">
+              <p class="ptype">{{cdata.type}}</p>
+              <p class="pamount">{{cdata.amount}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="ppercentage text-dark bg-white  ">{{cdata.percentage}}% <i *ngIf="cdata.percentage>0"
+                    class="fa-solid fa-arrow-up arrow"></i>
+                  <i *ngIf="cdata.percentage <0" class="fa-solid fa-arrow-down arrow"></i>
+                </p>
+                <p class="ms-1 pmonth">{{cdata.month}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h1>Recently Active Users</h1>
+          <div class="table-responsive-md">
             <table class="table table-hover ">
-                <thead>
-                    <tr>
-
-                        <th>USERID/NAME</th>
-                        <th>Phone Number</th>
-                        <th>Transaction Category</th>
-                        <th>Transaction Amount</th>
-                        <th>Account Type</th>
-                        <th>Balance Amount</th>
-                        <th style="width: 90px;"></th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let data of tableData">
-                    <tr>
-
-                        <td class="d-block">
-                            <p>{{data.name}} </p>
-                            <p>ID {{data.userId}}</p>
-                        </td>
-                        <td>{{data.phonenumber}}</td>
-                        <td class="d-block">
-                            <p>{{data.transactionCategory.type}}</p>
-                            <p>{{data.transactionCategory.category}}</p>
-                        </td>
-                        <td>
-                            {{data.transactionAmount}}
-                        </td>
-                        <td>{{data.accountType}}</td>
-                        <td>{{data.balanceAmount}}</td>
-                        <td><a class="trhover">view</a></td>
-                    </tr>
-
-                </tbody>
-
+              <thead>
+                <tr class="trow">
+                  <th>USERID/NAME</th>
+                  <th>Phone Number</th>
+                  <th>Transaction Category</th>
+                  <th>Transaction Amount</th>
+                  <th>Account Type</th>
+                  <th>Balance Amount</th>
+                  <th style="width: 90px;"></th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let data of tableData">
+                <tr>
+                  <td class="d-block">
+                    <p>{{data.name}} </p>
+                    <p style="color: #707070;">ID {{data.userId}}</p>
+                  </td>
+                  <td>{{data.phonenumber}}</td>
+                  <td class="d-block">
+                    <p>{{data.transactionCategory.type}}</p>
+                    <p style="color: #707070;">{{data.transactionCategory.category}}</p>
+                  </td>
+                  <td>
+                    {{data.transactionAmount}}
+                  </td>
+                  <td>{{data.accountType}}</td>
+                  <td>{{data.balanceAmount}}</td>
+                  <td><a class="trhover">view</a></td>
+                </tr>
+              </tbody>
             </table>
+          </div>
+          <div class="w-100 text-center">
+            <button class="button rounded-5 viewbtn" (click)="view()">{{viewbtn}}</button>
+          </div>
         </div>
-
-        <div class="w-100 text-center">
-            <!-- getAllData() -->
-            <button class="button rounded-5" (click)="view()">{{viewbtn}}</button>
-        </div>
+      </div>
     </div>
+  </div>
 </div>

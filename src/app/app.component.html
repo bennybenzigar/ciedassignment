@@ -1,3 +1,8 @@
-<!-- <></> -->
-
-<router-outlet></router-outlet>
+<div class="container-fluid g-0" *ngIf="!isDestroyed">
+    <div *ngIf="loadedComponentPath=='/login'">
+        <router-outlet></router-outlet>
+    </div>
+    <div *ngIf="loadedComponentPath!='/login'">
+        <app-dashboard *ngIf="loadedComponentPath!='/login'"></app-dashboard>
+    </div>
+</div>

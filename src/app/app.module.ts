@@ -11,13 +11,15 @@ import {HttpClientModule} from '@angular/common/http'
 import { authGuardService } from './services/auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { MainComponent } from './main/main.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
     PageNotFoundComponent,
-    SidenavComponent
+    SidenavComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

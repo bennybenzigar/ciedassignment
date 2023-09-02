@@ -4,43 +4,66 @@
             <p class="budget">Budget</p>
             <img class="img-fluid w-100" src="assets/Rectangle 2313.png" alt="">
         </div>
-
+        <!-- <img src="https://flagcdn.com/w320/mr.png" style="height: 20px;width: 20px;" alt=""> -->
         <div class="col-md-6 mt-2 main-div">
             <!-- <div> -->
-                <div class="d-block mb-2 me-2 gethelp">
-                    <a href="">Having Trouble? <span >Get Help</span></a>
-                    drop
-                </div>
+            <div class="d-flex align-items-center mb-2 me-2 gethelp">
+                <a  class="me-1 help">Having Trouble? <span class="me-1 fw-bold help">Get Help</span></a>
+
+
+
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle me-1" type="button" data-toggle="dropdown">
+                      Select an option
+                    </button>
+                    <div class="dropdown-menu">
+                      <a *ngFor="let option of flags" class="dropdown-item">
+                        <img [src]="option.flagss" alt="{{ option.name }}" class="option-image">
+                        {{ option.name }}
+                      </a>
+                    </div>
+                  </div>
+                  
+
+            </div>
             <div class="form-div mt-4 ">
 
-                
-                
+
+
                 <form [formGroup]="loginForm" (ngSubmit)="login()">
 
                     <h2>Login to Budget</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitc</p>
+                    <p class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elitc</p>
                     <div>
-                        <label for="email" >email</label>
-                        <input type="email"  formControlName="email" name="email" class="form-control">
+                        <label class="emaillabel ms-3" for="email">Email</label>
+                        <input type="email" formControlName="email" name="email" class="form-control ms-1 emailinput">
                     </div>
-                   <div>
-                    <label for="password">password</label>
-                    <input type="password" formControlName="password" name="password" class="form-control">
-                   </div>
-                    
-                    <div class="d-flex justify-content-between">
+                    <div class="passwordDiv">
+                        <label class="passwordlabel ms-3" for="password">Password</label>
+                        <input type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" name="password"
+                          class="form-control passwordinput ms-1 "/>
+                        <button class="showbtn bg-transparent border-none" type="button" (click)="togglePasswordVisibility()">
+                          {{ showPassword ? 'Hide' : 'Show' }}
+                        </button>
+                      </div>
+                      
+                
+                    <div class="d-flex justify-content-between align-items-center checkboxDiv">
                         <div>
-                            <input formControlName="checkbox"  type="checkbox" id="checkbox">
-                            <label for="checkbox">Keep me logged in</label>
+                            <input formControlName="checkbox" type="checkbox" id="checkbox">
+                            <label for="checkbox" class="cf">Keep me logged in</label>
+                            
                         </div>
-
-
-                        <a >Forgot Password?</a>
+                
+                        <a class="cf">Forgot Password?</a>
                     </div>
-
-                    <button [disabled]="!loginForm.valid"  type="submit" class="btn btn-primary w-100">Login</button>
-                    <a > Create New Account?</a>
+                
+                    <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary loginbtn w-100">Login</button>
+                    <div class="w-100   text-center">
+                        <a class="cf">Create New Account?</a>
+                    </div>
                 </form>
+                
             </div>
 
             <!-- </div> -->
