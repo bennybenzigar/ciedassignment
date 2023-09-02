@@ -29,17 +29,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
    
-  this.l=localStorage.getItem('l')
-  console.log(this.l,'ll')
-  if(this.l=='true'){
-    localStorage.removeItem('l')
-    window.location.reload()
-  }
-  
-this.router.navigateByUrl('dashboard')
 
 
-
+this.load()
     this.getTableData()
     this.getCardData()
 
@@ -72,7 +64,17 @@ this.router.navigateByUrl('dashboard')
       this.cardData.push(res)
     })
   }
-
+load(){
+  
+  this.l=localStorage.getItem('l')
+  console.log(this.l,'ll')
+  if(this.l=='true'){
+    localStorage.removeItem('l')
+    window.location.reload()
+  }
+  
+this.router.navigateByUrl('dashboard')
+}
   getAllData() {
     this.tableData = []
     this.dataService.tableData$.subscribe((res: any) => {

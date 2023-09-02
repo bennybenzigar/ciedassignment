@@ -109,7 +109,7 @@ h2 {
 }
 
 .checkboxDiv {
-    margin-bottom: 2.69rem;
+    margin-bottom: 1.69rem;
 
 }
 
@@ -122,6 +122,9 @@ h2 {
 font-size:0.75rem ;
 color: black;
 
+}
+.create{
+    cursor: pointer;
 }
 a{
     text-decoration: none;
@@ -161,4 +164,8 @@ a{
 }
 .viewbtn{
    font-size: 0.88rem; 
+}
+
+.dropdown-toggle::after{
+    margin-top: 18px;
 }

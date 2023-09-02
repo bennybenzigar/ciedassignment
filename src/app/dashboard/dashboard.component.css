@@ -120,6 +120,11 @@ th {
 .dashboardtxt{
 margin-top: 2.2rem;
 }
+.viewlink{
+    cursor: pointer;
+    text-decoration: none;
+    color:black
+}
 
 @media screen and (max-width: 768px) {
     .cardDiv {
@@ -159,6 +164,7 @@ margin-top: 2.2rem;
 
     .card {
         height: 10.375;
+        padding: 2.5rem
     }
 
     html {

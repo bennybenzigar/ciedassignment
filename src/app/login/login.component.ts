@@ -18,9 +18,11 @@ export class LoginComponent implements OnInit {
   flags:any=[]
   selectedOption:any
   showPassword: boolean = false;
-
+invalidDetails:boolean=false
   constructor(private dataService: DataService, private formBuilder: FormBuilder, private router: Router) { }
   ngOnInit(): void {
+    localStorage.removeItem('user')
+    localStorage.removeItem('l')
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
 
@@ -77,7 +79,7 @@ export class LoginComponent implements OnInit {
       }
       else {
         alert('please check your email')
-
+this.invalidDetails=true
       }
     }
     else {

@@ -1,7 +1,7 @@
 <div class="container-fluid" style="max-height: 100vh">
   <div class="row" style="overflow: auto;">
     <div class="col-md-2 navborder" [style.display]="shouldDisplaySidenav() ">
-      <div class="sidenavdiv"  >
+      <div class="sidenavdiv">
         <app-sidenav></app-sidenav>
       </div>
     </div>
@@ -11,32 +11,36 @@
       </div>
       <div *ngIf="loadedComponentPath=='/dashboard'">
         <!-- <button *ngIf="screenWidth<700" (click)="changeStyle()">btn</button> -->
-        <a class="btn "*ngIf="screenWidth<768"  data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+        <a class="btn " *ngIf="screenWidth<768" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+          aria-controls="offcanvasExample">
           <i class="fa-solid fa-bars"></i>
         </a>
         <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
           Button with data-bs-target
         </button> -->
-        
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+          aria-labelledby="offcanvasExampleLabel">
           <div class="offcanvas-header">
             <!-- <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5> -->
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
             <div>
-             <app-sidenav></app-sidenav>
+              <app-sidenav></app-sidenav>
             </div>
-           
+
           </div>
         </div>
         <!--  -->
         <div>
           <h1 class="dashboardtxt">Dashboard</h1>
-          <p class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+          <p class="lorem mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
           <div class="iDiv">
-            <i class="fa-solid fa-info rounded-circle text-white info me-1  d-flex align-items-center justify-content-center"></i>
-            <p class="support me-1">You Have <span class="me-1">32 Support Request for Response</span> <span><a>View</a></span></p>
+            <i
+              class="fa-solid fa-info rounded-circle text-white info me-1  d-flex align-items-center justify-content-center"></i>
+            <p class="support me-1">You Have <span class="me-1">32 Support Request for Response</span>
+              <span><a class="viewlink">View</a></span></p>
           </div>
         </div>
         <div class="cardDiv w-100">
@@ -55,7 +59,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div class="mt-3">
           <h1>Recently Active Users</h1>
           <div class="table-responsive-md">
             <table class="table table-hover ">

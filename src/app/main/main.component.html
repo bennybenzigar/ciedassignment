@@ -5,5 +5,10 @@
     <div class="display-area" [ngClass]="{'newclass': loadedComponentPath !== '/login'}">
       <router-outlet></router-outlet>
     </div>
+
+    <div *ngIf="loadedComponentPath !='/pagenotfound'">
+      <app-page-not-found></app-page-not-found>
+    </div>
+    
   </main>
 </div>

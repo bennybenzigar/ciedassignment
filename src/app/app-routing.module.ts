@@ -9,8 +9,10 @@ const routes: Routes = [{path:'', redirectTo:'login', pathMatch:'full'},
 {path:'login', component:LoginComponent},
 {path:'dashboard', component:DashboardComponent, canActivate:[authGuardService]},
 // {path:'dashboard', component:DashboardComponent},
-{path:'**', redirectTo:'pagenotfound'},
-{path:'pagenotfound', component:PageNotFoundComponent}];
+
+{path:'pagenotfound', component:PageNotFoundComponent},
+{path:'**', redirectTo:'pagenotfound'}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
